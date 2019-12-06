@@ -1,0 +1,90 @@
+{
+    "name": "PlayerControls",
+    "maps": [
+        {
+            "name": "PlayerControls",
+            "id": "5a6b1cee-dc61-4691-8305-4aa99fd565b9",
+            "actions": [
+                {
+                    "name": "RotateLeftArm",
+                    "type": "Value",
+                    "id": "a157c614-169e-477c-9eeb-14a6d7e59fd1",
+                    "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RotateRightArm",
+                    "type": "Value",
+                    "id": "310fbf80-2e16-496f-9f7c-1cf79863d0a0",
+                    "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LeftShoot",
+                    "type": "Button",
+                    "id": "9912880d-4c10-46f1-afa7-b659305d4e79",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RightShoot",
+                    "type": "Button",
+                    "id": "eafe79ba-f567-4ad7-a801-430924bb77b9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "07b6fbf7-aba0-458c-9996-54f6dd735196",
+                    "path": "<DualShockGamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateLeftArm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1c7684b3-f6b2-4cdb-8785-1ded4da0b848",
+                    "path": "<DualShockGamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateRightArm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "51e1154c-ce98-4c8e-9ca3-b43de1ed48d4",
+                    "path": "<DualShockGamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftShoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a9c41a4c-4db0-406b-9a28-87774c151bcb",
+                    "path": "<DualShockGamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightShoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
