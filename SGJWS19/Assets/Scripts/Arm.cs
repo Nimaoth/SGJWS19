@@ -16,8 +16,6 @@ public class Arm : MonoBehaviour
 
     private AudioSource audioSource;
 
-    private ParticleSystem smokeScreen;
-
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -41,7 +39,6 @@ public class Arm : MonoBehaviour
                 {
                     Shoot();
                     cooldown = player.ShotgunCooldown;
-                    Smoke();
                 }
                 break;
             }
@@ -58,6 +55,8 @@ public class Arm : MonoBehaviour
             return;
         }
 
+        var smoke = GameObject.Instantiate(SmokeScreen, SmokeSpawnPoint.transform.position, Quaternion.identity);
+        GameObject.Destroy(smoke, 2);
         CameraFollow.Instance.ShakeDaBooty();
         audioSource.Play();
         Ammo -= 1;
@@ -74,12 +73,6 @@ public class Arm : MonoBehaviour
 
             bulletGO.GetComponent<Rigidbody2D>().AddForce(-bulletForce * player.BulletSpeed, ForceMode2D.Impulse);
         }
-    }
-
-    public void Smoke()
-    {
-
-        GameObject.Instantiate(SmokeScreen, SmokeSpawnPoint.transform.position, Quaternion.identity);
     }
 
     public void Reload(bool force)
