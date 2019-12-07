@@ -5,6 +5,8 @@ public class Arm : MonoBehaviour
     public PlayerController player;
 
     public GameObject BulletPrefab;
+    public GameObject SmokeScreen;
+    public GameObject SmokeSpawnPoint;
 
     public float targetAngle;
     public bool shoot;
@@ -13,6 +15,8 @@ public class Arm : MonoBehaviour
     public int Ammo = 2;
 
     private AudioSource audioSource;
+
+    private ParticleSystem smokeScreen;
 
     private void Start()
     {
@@ -37,6 +41,7 @@ public class Arm : MonoBehaviour
                 {
                     Shoot();
                     cooldown = player.ShotgunCooldown;
+                    Smoke();
                 }
                 break;
             }
@@ -66,8 +71,15 @@ public class Arm : MonoBehaviour
         {
             var bulletForce = Quaternion.Euler(0, 0, i * 5 * Random.Range(0.9f, 1.1f)) * new Vector2(force.x, force.y);
             var bulletGO = GameObject.Instantiate(BulletPrefab, transform.position, Quaternion.identity);
+
             bulletGO.GetComponent<Rigidbody2D>().AddForce(-bulletForce * player.BulletSpeed, ForceMode2D.Impulse);
         }
+    }
+
+    public void Smoke()
+    {
+
+        GameObject.Instantiate(SmokeScreen, SmokeSpawnPoint.transform.position, Quaternion.identity);
     }
 
     public void Reload(bool force)

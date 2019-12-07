@@ -194,6 +194,9 @@ MonoBehaviour:
   player: {fileID: 1146422967275235250}
   BulletPrefab: {fileID: 5446077695875319568, guid: b904af7730efe164cb557189995068d2,
     type: 3}
+  SmokeScreen: {fileID: 706667804145741956, guid: c9a87ee1f5a4b884eaa90de7892aa23b,
+    type: 3}
+  SmokeSpawnPoint: {fileID: 8682595141666401701}
   targetAngle: 0
   shoot: 0
   cooldown: 0
@@ -485,6 +488,9 @@ MonoBehaviour:
   player: {fileID: 1146422967275235250}
   BulletPrefab: {fileID: 5446077695875319568, guid: b904af7730efe164cb557189995068d2,
     type: 3}
+  SmokeScreen: {fileID: 706667804145741956, guid: c9a87ee1f5a4b884eaa90de7892aa23b,
+    type: 3}
+  SmokeSpawnPoint: {fileID: 5121518767878348631}
   targetAngle: 0
   shoot: 0
   cooldown: 0
@@ -948,6 +954,66 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &5121518767878348631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 714209706863228631}
+  m_Layer: 9
+  m_Name: SmokeSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &714209706863228631
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5121518767878348631}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -1.76, y: 0.22, z: 0}
+  m_LocalScale: {x: 3.3333323, y: 3.3333325, z: 3.333333}
+  m_Children: []
+  m_Father: {fileID: 7672863980928161156}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8682595141666401701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6347894879310941335}
+  m_Layer: 9
+  m_Name: SmokeSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6347894879310941335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8682595141666401701}
+  m_LocalRotation: {x: -0.9804605, y: 0.1967164, z: -0, w: 0}
+  m_LocalPosition: {x: -1.82, y: 0.21, z: 0.033333305}
+  m_LocalScale: {x: 4.989784, y: 2.1586008, z: 3.3333318}
+  m_Children: []
+  m_Father: {fileID: 7971215220843892065}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3163152893093078651
 PrefabInstance:
   m_ObjectHideFlags: 0
