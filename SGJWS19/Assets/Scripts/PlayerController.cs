@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
         
         Rigidbody.isKinematic     = true;
         yield return null;
-        Rigidbody.position        = closestBonfire.transform.position;
+        Rigidbody.position        = closestBonfire.SpawnPoint.position;
         Rigidbody.velocity        = Vector2.zero; 
         Rigidbody.rotation        = 0;
         Rigidbody.angularVelocity = 0;

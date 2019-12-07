@@ -4,4 +4,5 @@ using UnityEngine;
 
 public class Bonfire : MonoBehaviour
 {
+    public Transform SpawnPoint;
 }
