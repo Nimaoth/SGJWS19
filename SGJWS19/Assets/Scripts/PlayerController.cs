@@ -128,6 +128,15 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
         }
     }
 
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            // reload
+            Reload();
+        }
+    }
+
     #region Input stuff
 
     public void OnLeftShoot(InputAction.CallbackContext context)
