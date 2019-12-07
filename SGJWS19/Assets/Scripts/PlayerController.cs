@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
 
     public Arm Left;
     public Arm Right;
+    public HingeJoint2D HeadJoint;
+
     public PlayerState State;
     public float HP { get; private set; } = 1.0f;
 
@@ -36,6 +38,9 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
 
     [SerializeField]
     private bool isInBonfire = false;
+
+    [SerializeField]
+    private bool isOnGround = false;
 
     // Start is called before the first frame update
     void Start()
@@ -82,16 +87,26 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
         }
 
         HP = Mathf.Clamp01(HP);
+
+        // move head
+        HeadJoint.motor = new JointMotor2D
+        {
+            motorSpeed     = -HeadJoint.jointAngle,
+            maxMotorTorque = HeadJoint.motor.maxMotorTorque,
+        };
     }
 
     private void FixedUpdate()
     {
-        var angle = (Rigidbody.rotation + 360.0f) % 360.0f;
-        if (angle > 180.0f)
-            angle -= 360.0f;
+        // var angle = (Rigidbody.rotation + 360.0f) % 360.0f;
+        // if (angle > 180.0f)
+        //     angle -= 360.0f;
 
-        // Rigidbody.MoveRotation(-angle * Time.fixedDeltaTime * BalanceStrength);
-        Rigidbody.AddTorque(-angle / 180.0f * BalanceStrength);
+        if (Rigidbody.velocity.sqrMagnitude < 0.5)
+        {
+            var angle = Mathf.LerpAngle(Rigidbody.rotation, 0, BalanceStrength * Time.fixedDeltaTime);
+            Rigidbody.MoveRotation(angle);
+        }
     }
 
     private void Reload(bool force)
@@ -127,7 +142,7 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            // reload
+            isOnGround = true;
             Reload(false);
         }
     }
@@ -136,8 +151,17 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            // reload
+            isOnGround = true;
             Reload(false);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = false;
         }
     }
 
