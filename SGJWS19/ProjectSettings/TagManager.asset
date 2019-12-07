@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bonfire
   - Ground
+  - AmmoPack
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Projectiles
   - Player
   - Bonfire
-  - Ground
+  - Environment
   - 
   - 
   - 

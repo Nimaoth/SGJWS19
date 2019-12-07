@@ -7,11 +7,22 @@ public class Level : MonoBehaviour
     public static Level Instance { get; private set; }
 
     public Bonfire[] Bonfires;
+
+    public GameObject[] AmmoPacks;
+
     public int FurthestBonfire = 0;
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    public void Reset()
+    {
+        foreach (var ap in AmmoPacks)
+        {
+            ap.SetActive(true);
+        }
     }
 
     public void VisitBonfire(Bonfire b)

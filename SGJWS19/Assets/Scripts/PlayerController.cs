@@ -90,12 +90,24 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
         Rigidbody.AddTorque(-angle / 180.0f * BalanceStrength);
     }
 
+    private void Reload()
+    {
+        Left.Ammo = 2;
+        Right.Ammo = 2;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Bonfire"))
         {
             Level.Instance.VisitBonfire(other.GetComponent<Bonfire>());
+            Level.Instance.Reset();
             isInBonfire = true;
+        }
+        else if (other.CompareTag("AmmoPack"))
+        {
+            Reload();
+            other.gameObject.SetActive(false);
         }
     }
 
@@ -112,8 +124,7 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
         if (other.gameObject.CompareTag("Ground"))
         {
             // reload
-            Left.Ammo = 2;
-            Right.Ammo = 2;
+            Reload();
         }
     }
 
