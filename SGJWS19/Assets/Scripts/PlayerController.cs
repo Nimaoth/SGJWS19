@@ -53,11 +53,15 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
 
         var closestBonfire = Level.Instance.FindClosest(transform.position);
         
-        Rigidbody.isKinematic = true;
-        Rigidbody.rotation = 0;
-        Rigidbody.position = closestBonfire.transform.position;
-        Rigidbody.isKinematic = false;
-
+        Rigidbody.isKinematic     = true;
+        yield return null;
+        Rigidbody.position        = closestBonfire.transform.position;
+        Rigidbody.velocity        = Vector2.zero; 
+        Rigidbody.rotation        = 0;
+        Rigidbody.angularVelocity = 0;
+        yield return null;
+        Rigidbody.isKinematic     = false;
+        yield return new WaitForSeconds(1);
         State = PlayerState.Normal;
     } 
 
@@ -90,10 +94,10 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
         Rigidbody.AddTorque(-angle / 180.0f * BalanceStrength);
     }
 
-    private void Reload()
+    private void Reload(bool force)
     {
-        Left.Ammo = 2;
-        Right.Ammo = 2;
+        Left.Reload(force);
+        Right.Reload(force);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -106,7 +110,7 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
         }
         else if (other.CompareTag("AmmoPack"))
         {
-            Reload();
+            Reload(true);
             other.gameObject.SetActive(false);
         }
     }
@@ -124,7 +128,16 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
         if (other.gameObject.CompareTag("Ground"))
         {
             // reload
-            Reload();
+            Reload(false);
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            // reload
+            Reload(false);
         }
     }
 

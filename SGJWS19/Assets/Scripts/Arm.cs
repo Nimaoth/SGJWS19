@@ -12,6 +12,13 @@ public class Arm : MonoBehaviour
 
     public int Ammo = 2;
 
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void Update()
     {
         var angle = Mathf.LerpAngle(transform.rotation.eulerAngles.z, targetAngle, player.ArmSpeed * Time.deltaTime);
@@ -46,8 +53,9 @@ public class Arm : MonoBehaviour
             return;
         }
 
+        CameraFollow.Instance.ShakeDaBooty();
+        audioSource.Play();
         Ammo -= 1;
-
 
         var force = transform.up * player.ShotgunPower;
         player.Rigidbody.AddForceAtPosition(force, player.LeftForcePoint.position, ForceMode2D.Impulse);
@@ -60,6 +68,12 @@ public class Arm : MonoBehaviour
             var bulletGO = GameObject.Instantiate(BulletPrefab, transform.position, Quaternion.identity);
             bulletGO.GetComponent<Rigidbody2D>().AddForce(-bulletForce * player.BulletSpeed, ForceMode2D.Impulse);
         }
+    }
+
+    public void Reload(bool force)
+    {
+        if (force || cooldown <= 0)
+            Ammo = 2;
     }
 
     public void OnShootDown()
