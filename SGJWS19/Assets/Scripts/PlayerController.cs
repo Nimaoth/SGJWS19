@@ -151,6 +151,16 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
             Reload(true);
             other.gameObject.SetActive(false);
         }
+        else if (other.gameObject.CompareTag("Icicle"))
+        {
+            var icicle = other.gameObject.GetComponent<Icicle>();
+            if (!icicle.DidDamage)
+            {
+                TakeDamage(icicle.Damage);
+                Freeze(icicle.FreezDuration);
+            }
+            icicle.DidDamage = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -174,16 +184,6 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
             TakeDamage(snowball.Damage);
             Freeze(snowball.FreezDuration);
             snowball.Break();
-        }
-        else if (other.gameObject.CompareTag("Icicle"))
-        {
-            var icicle = other.gameObject.GetComponent<Icicle>();
-            if (!icicle.DidDamage)
-            {
-                TakeDamage(icicle.Damage);
-                Freeze(icicle.FreezDuration);
-            }
-            icicle.DidDamage = true;
         }
     }
 
