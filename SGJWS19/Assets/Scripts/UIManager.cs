@@ -10,10 +10,15 @@ public class UIManager : MonoBehaviour
 
     public PlayerController playerController;
 
+    public float VisibleHPAdjustSpeed = 10.0f;
+
+    private float visibleHP;
+
     // Update is called once per frame
     void Update()
     {
-        sPlayerHP.value = playerController.HP;
+        visibleHP = Mathf.Lerp(visibleHP, playerController.HP, VisibleHPAdjustSpeed * Time.deltaTime);
+        sPlayerHP.value = visibleHP;
 
         for (int i = 0; i < AmmoLeft.Length; i++)
             AmmoLeft[i].SetActive(i < playerController.Left.Ammo);

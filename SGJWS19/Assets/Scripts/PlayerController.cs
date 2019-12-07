@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     public float BalanceStrength = 1.0f;
     public float BulletSpeed = 50.0f;
     public float HpLossSpeed = 0.1f;
+    public float HpRegenSpeed = 5.0f;
 
     public Transform LeftForcePoint;
     public Transform RightForcePoint;
@@ -73,20 +74,9 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     private void Update()
     {
         if (isInBonfire)
-        {
-            HP += HpLossSpeed * 10 * Time.deltaTime;   
-        }
+            TakeDamage(-HpRegenSpeed * Time.deltaTime);
         else
-        {
-            HP -= HpLossSpeed * Time.deltaTime;
-            if (HP < 0.0f)
-            {
-                // die, respawn at closest unlocked bonfire
-                StartCoroutine(Death());
-            }
-        }
-
-        HP = Mathf.Clamp01(HP);
+            TakeDamage(HpLossSpeed * Time.deltaTime);
 
         // move head
         HeadJoint.motor = new JointMotor2D
@@ -94,6 +84,17 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
             motorSpeed     = -HeadJoint.jointAngle,
             maxMotorTorque = HeadJoint.motor.maxMotorTorque,
         };
+    }
+
+    private void TakeDamage(float amount)
+    {
+        HP -= amount;
+        if (HP < 0.0f)
+        {
+            // die, respawn at closest unlocked bonfire
+            StartCoroutine(Death());
+        }
+        HP = Mathf.Clamp01(HP);
     }
 
     private void FixedUpdate()
@@ -144,6 +145,12 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
         {
             isOnGround = true;
             Reload(false);
+        }
+        else if (other.gameObject.CompareTag("Snowball"))
+        {
+            var snowball = other.gameObject.GetComponent<Snowball>();
+            TakeDamage(snowball.Damage);
+            snowball.Break();
         }
     }
 
