@@ -4,20 +4,28 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    public static CameraFollow Instance;
+
     public Transform playerTransform;
     public float cameraSpeed = 0.1f;
     public float cameraZoomSpeed = 1.0f;
+
+    public float ShakeDuration = 0.2f;
+    public float ShakeIntensity = 0.2f;
 
     private Rigidbody2D playerRigidbody;
     private new Camera camera;
     private float targetSize = 5;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
 
-    // Start is called before the first frame update
     void Start()
     {
         playerRigidbody = playerTransform.GetComponent<Rigidbody2D>();
-        camera = GetComponent<Camera>();
+        camera = GetComponentInChildren<Camera>();
     }
 
     // Update is called once per frame
@@ -33,5 +41,26 @@ public class CameraFollow : MonoBehaviour
     private float Map(float value, float f1, float f2, float t1, float t2) {
         value = Mathf.Clamp(value, f1, f2);
         return (value - f1) / (f2 - f1) * (t2 - t1) + t1;
+    }
+
+    public void ShakeDaBooty()
+    {
+        StartCoroutine(ShakeyShakey());
+    }
+
+    private IEnumerator ShakeyShakey()
+    {
+        float start = 0;
+        float radius = ShakeIntensity;
+        while (start < ShakeDuration)
+        {
+            camera.transform.localPosition = Random.insideUnitCircle.normalized * radius;
+
+            radius *= 0.9f;
+            start += Time.deltaTime;
+            yield return null;
+        }
+        
+        camera.transform.localPosition = Vector3.zero;
     }
 }
