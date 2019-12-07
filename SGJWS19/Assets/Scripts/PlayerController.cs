@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     public float ArmSpeed = 10.0f;
     public float RechargeSpeed = 0.5f;
     public float ChargeSpeed = 0.5f;
+    public float BalanceStrength = 1.0f;
+    public float BulletSpeed = 50.0f;
+
     public Transform LeftForcePoint;
     public Transform RightForcePoint;
     public Rigidbody2D Rigidbody;
@@ -35,6 +38,16 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
         controls = new PlayerControlSystem();
         controls.PlayerControls.SetCallbacks(this);
         State = PlayerState.Normal;
+    }
+
+    private void FixedUpdate()
+    {
+        var angle = (Rigidbody.rotation + 360.0f) % 360.0f;
+        if (angle > 180.0f)
+            angle -= 360.0f;
+
+        // Rigidbody.MoveRotation(-angle * Time.fixedDeltaTime * BalanceStrength);
+        Rigidbody.AddTorque(-angle / 180.0f * BalanceStrength);
     }
 
     #region Input stuff

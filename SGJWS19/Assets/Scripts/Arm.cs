@@ -4,6 +4,8 @@ public class Arm : MonoBehaviour
 {
     public PlayerController player;
 
+    public GameObject BulletPrefab;
+
     public float targetAngle;
     public bool shoot;
     public float cooldown = 0.0f;
@@ -13,8 +15,8 @@ public class Arm : MonoBehaviour
 
     private void Update()
     {
-        var leftAngle = Mathf.LerpAngle(transform.rotation.eulerAngles.z, targetAngle, player.ArmSpeed * Time.deltaTime);
-        transform.rotation = Quaternion.Euler(0, 0, leftAngle);
+        var angle = Mathf.LerpAngle(transform.rotation.eulerAngles.z, targetAngle, player.ArmSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
 
         cooldown -= Time.deltaTime;
 
@@ -40,21 +42,31 @@ public class Arm : MonoBehaviour
         {
             case PlayerState.Normal:
             {
-                if (shoot)
+                if (shoot && cooldown <= 0.0f)
                 {
-                    if (cooldown <= 0.0f)
-                    {
-                        var dir = transform.up;
-                        player.Rigidbody.AddForceAtPosition(dir * player.ShotgunPower * charge, player.LeftForcePoint.position, ForceMode2D.Impulse);
-                        cooldown = player.ShotgunCooldown;
-                    }
-                    charge = 0;
+                    Shoot();
+                    cooldown = player.ShotgunCooldown;
                 }
                 break;
             }
         }
 
         shoot = false;
+    }
+
+    private void Shoot()
+    {
+        var force = transform.up * player.ShotgunPower;
+        player.Rigidbody.AddForceAtPosition(force, player.LeftForcePoint.position, ForceMode2D.Impulse);
+
+        force.Normalize();
+
+        for (int i = -3; i <= 3; i++)
+        {
+            var bulletForce = Quaternion.Euler(0, 0, i * 5 * Random.Range(0.9f, 1.1f)) * new Vector2(force.x, force.y);
+            var bulletGO = GameObject.Instantiate(BulletPrefab, transform.position, Quaternion.identity);
+            bulletGO.GetComponent<Rigidbody2D>().AddForce(-bulletForce * player.BulletSpeed, ForceMode2D.Impulse);
+        }
     }
 
     public void OnShootDown()
