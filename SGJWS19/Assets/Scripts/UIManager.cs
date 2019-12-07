@@ -6,6 +6,8 @@ public class UIManager : MonoBehaviour
     public Slider sEnergyLeft;
     public Slider sEnergyRight;
 
+    public Slider sPlayerHP;
+
     public PlayerController playerController;
 
     // Update is called once per frame
@@ -13,5 +15,7 @@ public class UIManager : MonoBehaviour
     {
         sEnergyLeft.value  = 1 - Mathf.Clamp(playerController.Left.cooldown, 0, playerController.ShotgunCooldown) / playerController.ShotgunCooldown;
         sEnergyRight.value = 1 - Mathf.Clamp(playerController.Right.cooldown, 0, playerController.ShotgunCooldown) / playerController.ShotgunCooldown;
+
+        sPlayerHP.value = playerController.HP;
     }
 }

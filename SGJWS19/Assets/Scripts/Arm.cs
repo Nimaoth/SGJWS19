@@ -9,9 +9,8 @@ public class Arm : MonoBehaviour
     public float targetAngle;
     public bool shoot;
     public float cooldown = 0.0f;
-    public float Energy;
-    public bool charging = false;
-    public float charge = 0.0f;
+
+    public int Ammo = 2;
 
     private void Update()
     {
@@ -19,25 +18,10 @@ public class Arm : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
         cooldown -= Time.deltaTime;
-
-        if (charging)
-        {
-            var energyBefore = Energy;
-            Energy -= player.ChargeSpeed * Time.deltaTime;
-            Energy = Mathf.Clamp01(Energy);
-
-            charge += energyBefore - Energy;
-        }
-        else
-        {
-            Energy += player.RechargeSpeed * Time.deltaTime;
-            Energy = Mathf.Clamp01(Energy);
-        }
     }
 
     private void FixedUpdate()
     {
-
         switch (player.State)
         {
             case PlayerState.Normal:
@@ -56,6 +40,15 @@ public class Arm : MonoBehaviour
 
     private void Shoot()
     {
+        if (Ammo == 0)
+        {
+            // maybe play a sound so we know we have no ammo
+            return;
+        }
+
+        Ammo -= 1;
+
+
         var force = transform.up * player.ShotgunPower;
         player.Rigidbody.AddForceAtPosition(force, player.LeftForcePoint.position, ForceMode2D.Impulse);
 
@@ -71,13 +64,11 @@ public class Arm : MonoBehaviour
 
     public void OnShootDown()
     {
-        charging = true;
+        shoot = true;
     }
 
     public void OnShootUp()
     {
-        charging = false;
-        shoot = true;
     }
 
     public void OnRotate(float angle)
