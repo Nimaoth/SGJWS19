@@ -34,7 +34,7 @@ public class CameraFollow : MonoBehaviour
         var diff = playerTransform.position - transform.position;
         diff.z = 0;
         transform.position = Vector3.Lerp(transform.position, transform.position + diff, cameraSpeed * Time.fixedDeltaTime);
-        targetSize = Map(playerRigidbody.velocity.magnitude, 0, 10, 5, 10);
+        targetSize = Map(playerRigidbody.velocity.magnitude, 0, 10, 2, 6);
         camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, targetSize, cameraZoomSpeed * Time.fixedDeltaTime);
     }
 
