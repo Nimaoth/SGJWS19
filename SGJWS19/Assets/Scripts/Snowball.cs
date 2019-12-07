@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Snowball : MonoBehaviour
 {
-    public float Damage = 0.2f;
-    public float SplitForce = 1.0f;
+    public float Damage        = 0.2f;
+    public float FreezDuration = 0.5f;
+    public float SplitForce    = 1.0f;
     public GameObject PiecePrefab;
 
     [SerializeField]

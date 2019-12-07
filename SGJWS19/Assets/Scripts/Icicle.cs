@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class Icicle : MonoBehaviour
 {
+    public float Damage        = 0.2f;
+    public float FreezDuration = 0.5f;
+    public bool DidDamage = false;
+
     private Vector3 originalPosition;
     private bool respawning;
     private new Rigidbody2D rigidbody;
@@ -19,7 +23,7 @@ public class Icicle : MonoBehaviour
         if (respawning)
             yield break;
         respawning = true;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.0f);
 
         rigidbody.isKinematic = true;
         rigidbody.position = originalPosition;
@@ -35,6 +39,7 @@ public class Icicle : MonoBehaviour
     {
         yield return new WaitForSeconds(Random.Range(2.0f, 4.0f));
         rigidbody.isKinematic = false;
+        DidDamage = false;
     }
 
     private void OnCollisionEnter2D(Collision2D other) {

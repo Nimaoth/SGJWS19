@@ -23,8 +23,15 @@ public class Arm : MonoBehaviour
 
     private void Update()
     {
-        var angle = Mathf.LerpAngle(transform.rotation.eulerAngles.z, targetAngle, player.ArmSpeed * Time.deltaTime);
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        switch (player.State)
+        {
+            case PlayerState.Normal:
+            {
+                var angle = Mathf.LerpAngle(transform.rotation.eulerAngles.z, targetAngle, player.ArmSpeed * Time.deltaTime);
+                transform.rotation = Quaternion.Euler(0, 0, angle);
+            }
+            break;
+        }
 
         cooldown -= Time.deltaTime;
     }
@@ -71,7 +78,7 @@ public class Arm : MonoBehaviour
             var bulletForce = Quaternion.Euler(0, 0, i * 5 * Random.Range(0.9f, 1.1f)) * new Vector2(force.x, force.y);
             var bulletGO = GameObject.Instantiate(BulletPrefab, transform.position, Quaternion.identity);
 
-            bulletGO.GetComponent<Rigidbody2D>().AddForce(-bulletForce * player.BulletSpeed, ForceMode2D.Impulse);
+            bulletGO.GetComponent<Rigidbody2D>().velocity = -bulletForce * player.BulletSpeed;
         }
     }
 

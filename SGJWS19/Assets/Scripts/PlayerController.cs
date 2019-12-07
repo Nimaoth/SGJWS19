@@ -8,6 +8,7 @@ using static PlayerControlSystem;
 public enum PlayerState
 {
     Normal,
+    Frozen,
     Dead
 }
 
@@ -43,6 +44,9 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     [SerializeField]
     private bool isOnGround = false;
 
+    [SerializeField]
+    private float freezeTimeLeft = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +58,7 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     private IEnumerator Death()
     {
         State = PlayerState.Dead;
+        freezeTimeLeft = 0.0f;
 
         yield return new WaitForSeconds(1);
 
@@ -73,17 +78,33 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
 
     private void Update()
     {
+        // handle freezing
+        freezeTimeLeft -= Time.deltaTime;
+        if (freezeTimeLeft <= 0.0f)
+        {
+            // unfreeze
+            State = PlayerState.Normal;
+        }
+
+        // handle damage/healing
         if (isInBonfire)
             TakeDamage(-HpRegenSpeed * Time.deltaTime);
         else
             TakeDamage(HpLossSpeed * Time.deltaTime);
+    }
 
-        // move head
-        HeadJoint.motor = new JointMotor2D
-        {
-            motorSpeed     = -HeadJoint.jointAngle,
-            maxMotorTorque = HeadJoint.motor.maxMotorTorque,
-        };
+    private void Freeze(float duration)
+    {
+        switch (State) {
+            case PlayerState.Frozen:
+                freezeTimeLeft = Mathf.Max(duration, freezeTimeLeft);
+                break;
+
+            case PlayerState.Normal:
+                State = PlayerState.Frozen;
+                freezeTimeLeft = duration;
+                break;
+        }
     }
 
     private void TakeDamage(float amount)
@@ -99,14 +120,14 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
 
     private void FixedUpdate()
     {
-        // var angle = (Rigidbody.rotation + 360.0f) % 360.0f;
-        // if (angle > 180.0f)
-        //     angle -= 360.0f;
-
-        if (Rigidbody.velocity.sqrMagnitude < 0.5)
-        {
-            var angle = Mathf.LerpAngle(Rigidbody.rotation, 0, BalanceStrength * Time.fixedDeltaTime);
-            Rigidbody.MoveRotation(angle);
+        switch (State) {
+            case PlayerState.Normal:
+                if (Rigidbody.velocity.sqrMagnitude < 0.5)
+                {
+                    var angle = Mathf.LerpAngle(Rigidbody.rotation, 0, BalanceStrength * Time.fixedDeltaTime);
+                    Rigidbody.MoveRotation(angle);
+                }
+                break;
         }
     }
 
@@ -123,6 +144,7 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
             Level.Instance.VisitBonfire(other.GetComponent<Bonfire>());
             Level.Instance.Reset();
             isInBonfire = true;
+            freezeTimeLeft = 0.0f;
         }
         else if (other.CompareTag("AmmoPack"))
         {
@@ -150,7 +172,18 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
         {
             var snowball = other.gameObject.GetComponent<Snowball>();
             TakeDamage(snowball.Damage);
+            Freeze(snowball.FreezDuration);
             snowball.Break();
+        }
+        else if (other.gameObject.CompareTag("Icicle"))
+        {
+            var icicle = other.gameObject.GetComponent<Icicle>();
+            if (!icicle.DidDamage)
+            {
+                TakeDamage(icicle.Damage);
+                Freeze(icicle.FreezDuration);
+            }
+            icicle.DidDamage = true;
         }
     }
 
