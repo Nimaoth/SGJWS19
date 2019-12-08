@@ -774,7 +774,7 @@ MonoBehaviour:
   ArmSpeed: 15
   BalanceStrength: 3.5
   BulletSpeed: 25
-  HpLossSpeed: 0.05
+  HpLossSpeed: 0.001
   HpRegenSpeed: 5
   ReloadDelay: 0.25
   LeftForcePoint: {fileID: 1146422966486513241}
@@ -791,7 +791,7 @@ MonoBehaviour:
   isOnGround: 0
   groundTime: 0
   freezeTimeLeft: 0
-  footfallSnow: {fileID: 0}
+  footfallSnow: {fileID: 6944333646117476745}
 --- !u!114 &1146422967275235249
 MonoBehaviour:
   m_ObjectHideFlags: 0
