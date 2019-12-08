@@ -19,21 +19,32 @@ public class Icicle : MonoBehaviour
 
     private void Respawn()
     {
+        DidDamage = false;
         rigidbody.isKinematic = true;
         rigidbody.position = originalPosition;
         rigidbody.rotation = 0;
         rigidbody.velocity = Vector2.zero;
         rigidbody.angularVelocity = 0;
+        StartCoroutine(Drop());
     }
 
     private IEnumerator Drop()
     {
-        while (true) {
+        rigidbody.isKinematic = true;
+        float start = Time.time;
+        while (Time.time < start + 2.0f)
+        {
+            float s = (Time.time - start) / 2.0f;
+            transform.localScale = new Vector3(s, s, s);
+            yield return null;
+        }
+        rigidbody.isKinematic = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Ground"))
+        {
             Respawn();
-            yield return new WaitForSeconds(2.0f);
-            rigidbody.isKinematic = false;
-            DidDamage = false;
-            yield return new WaitForSeconds(4.0f);
         }
     }
 
