@@ -7,6 +7,9 @@ TagManager:
   - Bonfire
   - Ground
   - AmmoPack
+  - Snowball
+  - Icicle
+  - Rezone
   layers:
   - Default
   - TransparentFX
@@ -20,12 +23,12 @@ TagManager:
   - Player
   - Bonfire
   - Environment
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Cannon
+  - Snowball
+  - IcicleTip
+  - DialogTrigger
+  - NoPlayer
+  - OnlyPlayer
   - 
   - 
   - 

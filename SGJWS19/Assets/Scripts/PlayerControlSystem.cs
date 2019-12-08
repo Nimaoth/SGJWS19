@@ -49,6 +49,14 @@ public class @PlayerControlSystem : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""AdvanceDialog"",
+                    ""type"": ""Button"",
+                    ""id"": ""a1effcfa-8373-4e01-98cf-174408eb5ecd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -107,6 +115,7 @@ public class @PlayerControlSystem : IInputActionCollection, IDisposable
         m_PlayerControls_RotateRightArm = m_PlayerControls.FindAction("RotateRightArm", throwIfNotFound: true);
         m_PlayerControls_LeftShoot = m_PlayerControls.FindAction("LeftShoot", throwIfNotFound: true);
         m_PlayerControls_RightShoot = m_PlayerControls.FindAction("RightShoot", throwIfNotFound: true);
+        m_PlayerControls_AdvanceDialog = m_PlayerControls.FindAction("AdvanceDialog", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -160,6 +169,7 @@ public class @PlayerControlSystem : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerControls_RotateRightArm;
     private readonly InputAction m_PlayerControls_LeftShoot;
     private readonly InputAction m_PlayerControls_RightShoot;
+    private readonly InputAction m_PlayerControls_AdvanceDialog;
     public struct PlayerControlsActions
     {
         private @PlayerControlSystem m_Wrapper;
@@ -168,6 +178,7 @@ public class @PlayerControlSystem : IInputActionCollection, IDisposable
         public InputAction @RotateRightArm => m_Wrapper.m_PlayerControls_RotateRightArm;
         public InputAction @LeftShoot => m_Wrapper.m_PlayerControls_LeftShoot;
         public InputAction @RightShoot => m_Wrapper.m_PlayerControls_RightShoot;
+        public InputAction @AdvanceDialog => m_Wrapper.m_PlayerControls_AdvanceDialog;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -189,6 +200,9 @@ public class @PlayerControlSystem : IInputActionCollection, IDisposable
                 @RightShoot.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRightShoot;
                 @RightShoot.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRightShoot;
                 @RightShoot.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRightShoot;
+                @AdvanceDialog.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnAdvanceDialog;
+                @AdvanceDialog.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnAdvanceDialog;
+                @AdvanceDialog.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnAdvanceDialog;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -205,6 +219,9 @@ public class @PlayerControlSystem : IInputActionCollection, IDisposable
                 @RightShoot.started += instance.OnRightShoot;
                 @RightShoot.performed += instance.OnRightShoot;
                 @RightShoot.canceled += instance.OnRightShoot;
+                @AdvanceDialog.started += instance.OnAdvanceDialog;
+                @AdvanceDialog.performed += instance.OnAdvanceDialog;
+                @AdvanceDialog.canceled += instance.OnAdvanceDialog;
             }
         }
     }
@@ -215,5 +232,6 @@ public class @PlayerControlSystem : IInputActionCollection, IDisposable
         void OnRotateRightArm(InputAction.CallbackContext context);
         void OnLeftShoot(InputAction.CallbackContext context);
         void OnRightShoot(InputAction.CallbackContext context);
+        void OnAdvanceDialog(InputAction.CallbackContext context);
     }
 }

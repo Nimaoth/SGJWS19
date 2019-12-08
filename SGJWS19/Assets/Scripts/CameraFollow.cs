@@ -10,6 +10,9 @@ public class CameraFollow : MonoBehaviour
     public float cameraSpeed = 0.1f;
     public float cameraZoomSpeed = 1.0f;
 
+    public float ZoomMin = 3.0f;
+    public float ZoomMax = 6.0f;
+
     public float ShakeDuration = 0.2f;
     public float ShakeIntensity = 0.2f;
 
@@ -33,8 +36,10 @@ public class CameraFollow : MonoBehaviour
     {
         var diff = playerTransform.position - transform.position;
         diff.z = 0;
-        transform.position = Vector3.Lerp(transform.position, transform.position + diff, cameraSpeed * Time.fixedDeltaTime);
-        targetSize = Map(playerRigidbody.velocity.magnitude, 0, 10, 2, 6);
+        var pos = Vector3.Lerp(transform.position, transform.position + diff, cameraSpeed * Time.fixedDeltaTime);
+        pos.z = -10;
+        transform.position = pos;
+        targetSize = Map(playerRigidbody.velocity.magnitude, 0, 10, ZoomMin, ZoomMax);
         camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, targetSize, cameraZoomSpeed * Time.fixedDeltaTime);
     }
 

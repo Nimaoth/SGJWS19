@@ -7,7 +7,9 @@ using static PlayerControlSystem;
 [Serializable]
 public enum PlayerState
 {
+    Intro,
     Normal,
+    Frozen,
     Dead
 }
 
@@ -21,14 +23,23 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     public float BalanceStrength = 1.0f;
     public float BulletSpeed = 50.0f;
     public float HpLossSpeed = 0.1f;
+    public float HpRegenSpeed = 5.0f;
+    public float ReloadDelay = 0.75f;
 
     public Transform LeftForcePoint;
     public Transform RightForcePoint;
     public Rigidbody2D Rigidbody;
+    public Rigidbody2D RigidbodyHead;
+    public Material bodyMaterial;
+    public Material shotgunMaterial;
+    public Color freezeColor;
 
     public Arm Left;
     public Arm Right;
-    public PlayerState State;
+    public AudioSource ReloadSound;
+
+    public PlayerState State = PlayerState.Normal;
+
     public float HP { get; private set; } = 1.0f;
 
     // private stuff
@@ -37,12 +48,51 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     [SerializeField]
     private bool isInBonfire = false;
 
+    [SerializeField]
+    private bool isOnGround = false;
+
+    [SerializeField]
+    private float groundTime = 0.0f;
+
+    [SerializeField]
+    private float freezeTimeLeft = 0.0f;
+
+    private bool isReloading = false;
+
+    public ParticleSystem footfallSnow;
+
     // Start is called before the first frame update
     void Start()
     {
         controls = new PlayerControlSystem();
         controls.PlayerControls.SetCallbacks(this);
-        State = PlayerState.Normal;
+    }
+
+    internal void TeleportTo(Vector3 position, bool instaMoveCam = false)
+    {
+        IEnumerator MoveTo()
+        {
+            RigidbodyHead.isKinematic = true;
+            Rigidbody.isKinematic     = true;
+
+            yield return null;
+
+            RigidbodyHead.velocity                = Vector2.zero;
+            RigidbodyHead.angularVelocity         = 0;
+
+            Rigidbody.transform.position = position;
+            Rigidbody.isKinematic     = true;
+            Rigidbody.position        = position;
+            Rigidbody.rotation        = 0;
+            Rigidbody.velocity        = Vector2.zero; 
+            Rigidbody.angularVelocity = 0;
+            yield return null;
+
+            yield return null;
+            Rigidbody.isKinematic     = false;
+            RigidbodyHead.isKinematic = false;
+        }
+        StartCoroutine(MoveTo());
     }
 
     private IEnumerator Death()
@@ -52,52 +102,113 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
         yield return new WaitForSeconds(1);
 
         var closestBonfire = Level.Instance.FindClosest(transform.position);
-        
-        Rigidbody.isKinematic     = true;
-        yield return null;
-        Rigidbody.position        = closestBonfire.SpawnPoint.position;
-        Rigidbody.velocity        = Vector2.zero; 
-        Rigidbody.rotation        = 0;
-        Rigidbody.angularVelocity = 0;
-        yield return null;
-        Rigidbody.isKinematic     = false;
+
+        TeleportTo(closestBonfire.SpawnPoint.position);
         yield return new WaitForSeconds(1);
         State = PlayerState.Normal;
     } 
 
     private void Update()
     {
-        if (isInBonfire)
-        {
-            HP += HpLossSpeed * 10 * Time.deltaTime;   
-        }
+        if (isOnGround)
+            groundTime += Time.deltaTime;
         else
-        {
-            HP -= HpLossSpeed * Time.deltaTime;
-            if (HP < 0.0f)
-            {
-                // die, respawn at closest unlocked bonfire
-                StartCoroutine(Death());
-            }
+            groundTime = 0.0f;
+
+        // handle freezing
+        switch (State) {
+            case PlayerState.Frozen:
+            case PlayerState.Dead:
+                freezeTimeLeft -= Time.deltaTime;
+                if (freezeTimeLeft <= 0.0f)
+                    State = PlayerState.Normal;
+                break;
         }
 
+        // handle damage/healing
+        if (isInBonfire)
+            TakeDamage(-HpRegenSpeed * Time.deltaTime);
+        else
+            TakeDamage(HpLossSpeed * Time.deltaTime);
+
+        var targetColor = Color.white;
+        switch (State) {
+            case PlayerState.Frozen:
+            case PlayerState.Dead:
+                targetColor = freezeColor;
+                break;
+        }
+
+        bodyMaterial.color = Color.Lerp(bodyMaterial.color, targetColor, Time.deltaTime * 15.0f);
+        shotgunMaterial.color = Color.Lerp(shotgunMaterial.color, targetColor, Time.deltaTime * 15.0f);
+    }
+
+    private void Freeze(float duration)
+    {
+        switch (State) {
+            case PlayerState.Frozen:
+                freezeTimeLeft = Mathf.Max(duration, freezeTimeLeft);
+                break;
+
+            case PlayerState.Normal:
+                State = PlayerState.Frozen;
+                freezeTimeLeft = duration;
+                break;
+        }
+    }
+
+    private void TakeDamage(float amount)
+    {
+        HP -= amount;
+        if (HP <= 0.0f)
+        {
+            // die, respawn at closest unlocked bonfire
+            StartCoroutine(Death());
+        }
         HP = Mathf.Clamp01(HP);
     }
 
     private void FixedUpdate()
     {
-        var angle = (Rigidbody.rotation + 360.0f) % 360.0f;
-        if (angle > 180.0f)
-            angle -= 360.0f;
-
-        // Rigidbody.MoveRotation(-angle * Time.fixedDeltaTime * BalanceStrength);
-        Rigidbody.AddTorque(-angle / 180.0f * BalanceStrength);
+        switch (State) {
+            case PlayerState.Normal:
+                if (Rigidbody.velocity.sqrMagnitude < 1.5)
+                {
+                    var angle = Mathf.LerpAngle(Rigidbody.rotation, 0, BalanceStrength * Time.fixedDeltaTime);
+                    Rigidbody.MoveRotation(angle);
+                }
+                break;
+        }
     }
 
     private void Reload(bool force)
     {
-        Left.Reload(force);
-        Right.Reload(force);
+        if (force)
+        {
+            var l = Left.Reload();
+            var r = Right.Reload();
+            ReloadSound.Play();
+            return;
+        }
+
+        if (isReloading)
+            return;
+        isReloading = true;
+
+        IEnumerator ReloadCoro()
+        {
+            yield return new WaitForSeconds(ReloadDelay);
+            if (groundTime >= ReloadDelay)
+            {
+                var l = Left.Reload();
+                var r = Right.Reload();
+                if (!ReloadSound.isPlaying && (l || r))
+                    ReloadSound.Play();
+            }
+
+            isReloading = false;
+        }
+        StartCoroutine(ReloadCoro());
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -107,11 +218,22 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
             Level.Instance.VisitBonfire(other.GetComponent<Bonfire>());
             Level.Instance.Reset();
             isInBonfire = true;
+            freezeTimeLeft = Mathf.Min(1.0f, freezeTimeLeft);
         }
         else if (other.CompareTag("AmmoPack"))
         {
             Reload(true);
             other.gameObject.SetActive(false);
+        }
+        else if (other.gameObject.CompareTag("Icicle"))
+        {
+            var icicle = other.gameObject.GetComponent<Icicle>();
+            if (!icicle.DidDamage)
+            {
+                Freeze(icicle.FreezDuration);
+                TakeDamage(icicle.Damage);
+            }
+            icicle.DidDamage = true;
         }
     }
 
@@ -127,8 +249,28 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            // reload
+            isOnGround = true;
             Reload(false);
+
+            ParticleSystem.EmitParams param = new ParticleSystem.EmitParams();            
+            param.startSize = UnityEngine.Random.Range(0.05f, 0.15f);
+            param.startLifetime = 1.5f;
+
+            for(int i = 0; i < 10; i++)
+            {
+                param.velocity = new Vector3(UnityEngine.Random.Range(-1f, 1f), 1f, 0);
+                footfallSnow.Emit(param, 1);
+            }
+
+
+
+        }
+        else if (other.gameObject.CompareTag("Snowball"))
+        {
+            var snowball = other.gameObject.GetComponent<Snowball>();
+            Freeze(snowball.FreezDuration);
+            TakeDamage(snowball.Damage);
+            snowball.Break();
         }
     }
 
@@ -136,8 +278,17 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            // reload
+            isOnGround = true;
             Reload(false);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = false;
         }
     }
 
@@ -186,6 +337,12 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
             float angle = Vector2.SignedAngle(Vector2.down, dir);
             Right.OnRotate(angle);
         }
+    }
+
+    public void OnAdvanceDialog(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            DialogSystem.Instance.AdvanceDialog();
     }
 
     #endregion
