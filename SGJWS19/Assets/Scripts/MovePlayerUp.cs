@@ -11,9 +11,20 @@ public class MovePlayerUp : MonoBehaviour
     public GameObject UI;
     public GameObject PressStartToPlay;
 
+    CameraFollow cf;
+    private float zoomMin;
+    private float zoomMax;
+
+    private void Start() {
+        cf = camera.GetComponent<CameraFollow>();
+        zoomMin = cf.ZoomMin;
+        zoomMax = cf.ZoomMax;
+        cf.ZoomMin = cf.ZoomMax = 4;
+    }
+
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player")){
-            var move = new Vector2(0, 3);
+            var move = new Vector2(0, 12);
 
             camera.Translate(move);
             playerRB.isKinematic = true;
@@ -35,6 +46,8 @@ public class MovePlayerUp : MonoBehaviour
             player.State = PlayerState.Normal;
             UI.SetActive(true);
             PressStartToPlay.SetActive(false);
+            cf.ZoomMin = zoomMin;
+            cf.ZoomMax = zoomMax;
         }
     }
 }
