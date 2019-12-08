@@ -39685,7 +39685,7 @@ PrefabInstance:
     - target: {fileID: 1146422967275235250, guid: b77808b564687fe44b095617ae1dc995,
         type: 3}
       propertyPath: HpLossSpeed
-      value: 0.05
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 1146422967275235250, guid: b77808b564687fe44b095617ae1dc995,
         type: 3}
