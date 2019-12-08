@@ -837,20 +837,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 965706607884821770, guid: b77808b564687fe44b095617ae1dc995,
-        type: 3}
-      propertyPath: m_Distance
-      value: 0.005
-      objectReference: {fileID: 0}
     - target: {fileID: 1146422967275235248, guid: b77808b564687fe44b095617ae1dc995,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1146422967275235250, guid: b77808b564687fe44b095617ae1dc995,
-        type: 3}
-      propertyPath: HpLossSpeed
-      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1146422967275235252, guid: b77808b564687fe44b095617ae1dc995,
         type: 3}
@@ -906,16 +896,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2038663643100563968, guid: b77808b564687fe44b095617ae1dc995,
-        type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 0.517
-      objectReference: {fileID: 0}
-    - target: {fileID: 2038663643100563968, guid: b77808b564687fe44b095617ae1dc995,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b77808b564687fe44b095617ae1dc995, type: 3}
@@ -2645,6 +2625,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912593018850941237, guid: 026daa7cc22f9f745af422ea8d97c446,
+        type: 3}
+      propertyPath: FreezDuration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912593018850941237, guid: 026daa7cc22f9f745af422ea8d97c446,
+        type: 3}
+      propertyPath: Damage
+      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 026daa7cc22f9f745af422ea8d97c446, type: 3}
