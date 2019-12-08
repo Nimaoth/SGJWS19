@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     public Transform RightForcePoint;
     public Rigidbody2D Rigidbody;
     public Rigidbody2D RigidbodyHead;
+    public Material bodyMaterial;
+    public Material shotgunMaterial;
+    public Color freezeColor;
 
     public Arm Left;
     public Arm Right;
@@ -93,6 +96,13 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
             TakeDamage(-HpRegenSpeed * Time.deltaTime);
         else
             TakeDamage(HpLossSpeed * Time.deltaTime);
+
+        var targetColor = Color.white;
+        if (State == PlayerState.Frozen)
+            targetColor = freezeColor;
+
+        bodyMaterial.color = Color.Lerp(bodyMaterial.color, targetColor, Time.deltaTime * 10.0f);
+        shotgunMaterial.color = Color.Lerp(shotgunMaterial.color, targetColor, Time.deltaTime * 10.0f);
     }
 
     private void Freeze(float duration)
