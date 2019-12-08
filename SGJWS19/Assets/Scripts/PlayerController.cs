@@ -59,6 +59,8 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
 
     private bool isReloading = false;
 
+    public ParticleSystem footfallSnow;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -242,6 +244,19 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
         {
             isOnGround = true;
             Reload(false);
+
+            ParticleSystem.EmitParams param = new ParticleSystem.EmitParams();            
+            param.startSize = UnityEngine.Random.Range(0.05f, 0.15f);
+            param.startLifetime = 1.5f;
+
+            for(int i = 0; i < 10; i++)
+            {
+                param.velocity = new Vector3(UnityEngine.Random.Range(-1f, 1f), 1f, 0);
+                footfallSnow.Emit(param, 1);
+            }
+
+
+
         }
         else if (other.gameObject.CompareTag("Snowball"))
         {
