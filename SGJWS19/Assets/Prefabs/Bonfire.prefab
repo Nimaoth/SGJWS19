@@ -30,7 +30,7 @@ Transform:
   m_Father: {fileID: 7842542615317681551}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7842542615317681546
+--- !u!1 &5403288537428644374
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -38,41 +38,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7842542615317681551}
-  - component: {fileID: 7842542615317681548}
-  - component: {fileID: 7842542615317681549}
-  - component: {fileID: 6741992232566570709}
-  - component: {fileID: 598331336639600769}
+  - component: {fileID: 6821714639208984106}
+  - component: {fileID: 8103351427588223403}
+  - component: {fileID: 7659845709526947686}
   m_Layer: 10
-  m_Name: Bonfire
-  m_TagString: Bonfire
+  m_Name: GFX
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7842542615317681551
+--- !u!4 &6821714639208984106
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7842542615317681546}
+  m_GameObject: {fileID: 5403288537428644374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_Children:
-  - {fileID: 7842542616333850238}
-  - {fileID: 4734542086102127108}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7842542615317681551}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7842542615317681548
+--- !u!212 &8103351427588223403
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7842542615317681546}
+  m_GameObject: {fileID: 5403288537428644374}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -117,14 +113,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &7842542615317681549
+--- !u!95 &7659845709526947686
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7842542615317681546}
+  m_GameObject: {fileID: 5403288537428644374}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d8d5db9f00f67894c8712c061b465386, type: 2}
@@ -136,6 +132,41 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &7842542615317681546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7842542615317681551}
+  - component: {fileID: 6741992232566570709}
+  - component: {fileID: 598331336639600769}
+  m_Layer: 10
+  m_Name: Bonfire
+  m_TagString: Bonfire
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7842542615317681551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7842542615317681546}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_Children:
+  - {fileID: 7842542616333850238}
+  - {fileID: 4734542086102127108}
+  - {fileID: 6821714639208984106}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6741992232566570709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1040,7 +1071,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 25
+      scalar: 50
       minScalar: 10
       maxCurve:
         serializedVersion: 2
