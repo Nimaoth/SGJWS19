@@ -7,6 +7,7 @@ using static PlayerControlSystem;
 [Serializable]
 public enum PlayerState
 {
+    Intro,
     Normal,
     Frozen,
     Dead
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     public float BulletSpeed = 50.0f;
     public float HpLossSpeed = 0.1f;
     public float HpRegenSpeed = 5.0f;
+    public float ReloadDelay = 0.75f;
 
     public Transform LeftForcePoint;
     public Transform RightForcePoint;
@@ -35,7 +37,7 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     public Arm Left;
     public Arm Right;
 
-    public PlayerState State;
+    public PlayerState State = PlayerState.Normal;
     public float HP { get; private set; } = 1.0f;
 
     // private stuff
@@ -48,14 +50,18 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     private bool isOnGround = false;
 
     [SerializeField]
+    private float groundTime = 0.0f;
+
+    [SerializeField]
     private float freezeTimeLeft = 0.0f;
+
+    private bool isReloading = false;
 
     // Start is called before the first frame update
     void Start()
     {
         controls = new PlayerControlSystem();
         controls.PlayerControls.SetCallbacks(this);
-        State = PlayerState.Normal;
     }
 
     private IEnumerator Death()
@@ -82,12 +88,19 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
 
     private void Update()
     {
+        if (isOnGround)
+            groundTime += Time.deltaTime;
+        else
+            groundTime = 0.0f;
+
         // handle freezing
-        freezeTimeLeft -= Time.deltaTime;
-        if (freezeTimeLeft <= 0.0f)
-        {
-            // unfreeze
-            State = PlayerState.Normal;
+        switch (State) {
+            case PlayerState.Frozen:
+            case PlayerState.Dead:
+                freezeTimeLeft -= Time.deltaTime;
+                if (freezeTimeLeft <= 0.0f)
+                    State = PlayerState.Normal;
+                break;
         }
 
         // handle damage/healing
@@ -148,8 +161,29 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
 
     private void Reload(bool force)
     {
-        Left.Reload(force);
-        Right.Reload(force);
+        if (force)
+        {
+            Left.Reload();
+            Right.Reload();
+            return;
+        }
+
+        if (isReloading)
+            return;
+        isReloading = true;
+
+        IEnumerator ReloadCoro()
+        {
+            yield return new WaitForSeconds(ReloadDelay);
+            if (groundTime >= ReloadDelay)
+            {
+                Left.Reload();
+                Right.Reload();
+            }
+
+            isReloading = false;
+        }
+        StartCoroutine(ReloadCoro());
     }
 
     private void OnTriggerEnter2D(Collider2D other)
