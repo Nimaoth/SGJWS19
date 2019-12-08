@@ -33,8 +33,6 @@ public class DialogSystem : MonoBehaviour
     {
         Instance = this;
         state = DialogState.Empty;
-
-        DialogSystem.Instance.QueueText("uiae.");
     }
 
     private void Update()
@@ -100,6 +98,5 @@ public class DialogSystem : MonoBehaviour
             case DialogState.Empty:
                 break;
         }
-        DialogSystem.Instance.QueueText("Really makes me feel like a video game character with a poorly written backstory.");
     }
 }
