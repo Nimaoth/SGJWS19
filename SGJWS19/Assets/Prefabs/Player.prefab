@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8873428467148733756}
   - component: {fileID: 949735097957063169}
   - component: {fileID: 8469883910008473050}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 1146422965917267422}
   - component: {fileID: 1146422965917267421}
   - component: {fileID: 2038663643100563968}
-  m_Layer: 9
+  m_Layer: 17
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -709,6 +709,7 @@ GameObject:
   - component: {fileID: 1146422967275235251}
   - component: {fileID: 1146422967275235250}
   - component: {fileID: 1146422967275235249}
+  - component: {fileID: 1487521095463842465}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -733,6 +734,7 @@ Transform:
   - {fileID: 1146422966225268246}
   - {fileID: 1146422966486513241}
   - {fileID: 1146422966819826232}
+  - {fileID: 6687280856507627018}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -772,11 +774,15 @@ MonoBehaviour:
   ShotgunCooldown: 0.25
   ShotgunPower: 20
   ArmSpeed: 15
-  BalanceStrength: 3.5
+  BalanceStrength: 5
   BulletSpeed: 25
+<<<<<<< HEAD
   HpLossSpeed: 0.001
+=======
+  HpLossSpeed: 0.02
+>>>>>>> 93c47dba1908a29ee26994e42f9a47a41bed66f1
   HpRegenSpeed: 5
-  ReloadDelay: 0.25
+  ReloadDelay: 0.2
   LeftForcePoint: {fileID: 1146422966486513241}
   RightForcePoint: {fileID: 1146422966819826232}
   Rigidbody: {fileID: 1146422967275235251}
@@ -786,6 +792,7 @@ MonoBehaviour:
   freezeColor: {r: 0, g: 0.83644056, b: 1, a: 0}
   Left: {fileID: 1146422967207659439}
   Right: {fileID: 1146422966225268244}
+  ReloadSound: {fileID: 1487521095463842465}
   State: 1
   isInBonfire: 0
   isOnGround: 0
@@ -876,25 +883,110 @@ MonoBehaviour:
     m_ActionId: eafe79ba-f567-4ad7-a801-430924bb77b9
     m_ActionName: PlayerControls/RightShoot[/DualShock4GamepadHID/rightShoulder]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1146422967275235250}
-        m_MethodName: OnAdvanceDialog
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: aba5e5d6-5b29-4feb-95e5-a0e7c09e96ee
-    m_ActionName: PlayerControls/AdvanceDialog[/DualShock4GamepadHID/buttonSouth]
+      m_Calls: []
+    m_ActionId: a1effcfa-8373-4e01-98cf-174408eb5ecd
+    m_ActionName: PlayerControls/AdvanceDialog
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerControls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!82 &1487521095463842465
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146422967275235248}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6f67b8a26ce59d54db1530312ee993dc, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1146422967811572571
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,7 +996,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1146422967811572572}
-  - component: {fileID: 1146422967811572574}
   - component: {fileID: 1146422967811572573}
   - component: {fileID: 313165995172185094}
   m_Layer: 9
@@ -931,32 +1022,6 @@ Transform:
   m_Father: {fileID: 1146422967275235252}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1146422967811572574
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1146422967811572571}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!212 &1146422967811572573
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1023,6 +1088,63 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.1, y: 1.1}
   m_Direction: 0
+--- !u!1 &1586703880302594015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6687280856507627018}
+  - component: {fileID: 491601264293072022}
+  m_Layer: 17
+  m_Name: Shoulders
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6687280856507627018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586703880302594015}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1146422967275235252}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &491601264293072022
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586703880302594015}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.4}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.33, y: 0.16}
+  m_EdgeRadius: 0
 --- !u!1 &1962080181259087195
 GameObject:
   m_ObjectHideFlags: 0
@@ -6710,7 +6832,7 @@ GameObject:
   - component: {fileID: 5672947023211757304}
   - component: {fileID: 1084654423243747529}
   - component: {fileID: 2126767680209724441}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Hat
   m_TagString: Untagged
   m_Icon: {fileID: 0}

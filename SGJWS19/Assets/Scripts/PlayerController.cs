@@ -36,8 +36,10 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
 
     public Arm Left;
     public Arm Right;
+    public AudioSource ReloadSound;
 
     public PlayerState State = PlayerState.Normal;
+
     public float HP { get; private set; } = 1.0f;
 
     // private stuff
@@ -66,6 +68,26 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
         controls.PlayerControls.SetCallbacks(this);
     }
 
+    internal void TeleportTo(Vector3 position, bool instaMoveCam = false)
+    {
+        RigidbodyHead.isKinematic = true;
+        Rigidbody.isKinematic     = true;
+
+        // RigidbodyHead.transform.localPosition = new Vector3(0, 0.517f, 0);
+        // RigidbodyHead.transform.localRotation = Quaternion.identity;
+        RigidbodyHead.velocity                = Vector2.zero;
+        RigidbodyHead.angularVelocity         = 0;
+
+        Rigidbody.isKinematic     = true;
+        Rigidbody.position        = position;
+        Rigidbody.rotation        = 0;
+        Rigidbody.velocity        = Vector2.zero; 
+        Rigidbody.angularVelocity = 0;
+
+        Rigidbody.isKinematic     = false;
+        RigidbodyHead.isKinematic = false;
+    }
+
     private IEnumerator Death()
     {
         State = PlayerState.Dead;
@@ -74,16 +96,7 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
 
         var closestBonfire = Level.Instance.FindClosest(transform.position);
 
-        RigidbodyHead.isKinematic = true;
-        Rigidbody.isKinematic     = true;
-        yield return null;
-        Rigidbody.position        = closestBonfire.SpawnPoint.position;
-        Rigidbody.velocity        = Vector2.zero; 
-        Rigidbody.rotation        = 0;
-        Rigidbody.angularVelocity = 0;
-        yield return null;
-        Rigidbody.isKinematic     = false;
-        RigidbodyHead.isKinematic = false;
+        TeleportTo(closestBonfire.SpawnPoint.position);
         yield return new WaitForSeconds(1);
         State = PlayerState.Normal;
     } 
@@ -152,7 +165,7 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     {
         switch (State) {
             case PlayerState.Normal:
-                if (Rigidbody.velocity.sqrMagnitude < 0.5)
+                if (Rigidbody.velocity.sqrMagnitude < 1.5)
                 {
                     var angle = Mathf.LerpAngle(Rigidbody.rotation, 0, BalanceStrength * Time.fixedDeltaTime);
                     Rigidbody.MoveRotation(angle);
@@ -165,8 +178,9 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     {
         if (force)
         {
-            Left.Reload();
-            Right.Reload();
+            var l = Left.Reload();
+            var r = Right.Reload();
+            ReloadSound.Play();
             return;
         }
 
@@ -179,8 +193,10 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
             yield return new WaitForSeconds(ReloadDelay);
             if (groundTime >= ReloadDelay)
             {
-                Left.Reload();
-                Right.Reload();
+                var l = Left.Reload();
+                var r = Right.Reload();
+                if (!ReloadSound.isPlaying && (l || r))
+                    ReloadSound.Play();
             }
 
             isReloading = false;

@@ -83,9 +83,12 @@ public class Arm : MonoBehaviour
         }
     }
 
-    public void Reload()
+    public bool Reload()
     {
+        if (Ammo == 2)
+            return false;
         Ammo = 2;
+        return true;
     }
 
     public void OnShootDown()

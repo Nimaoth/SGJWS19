@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -8,18 +9,21 @@ public class Level : MonoBehaviour
 
     public Bonfire[] Bonfires;
 
-    public GameObject[] AmmoPacks;
+    public Transform AmmoPacksParent;
+    private List<GameObject> ammoPacks;
 
     public int FurthestBonfire = 0;
 
     private void Awake()
     {
         Instance = this;
+        ammoPacks = AmmoPacksParent.GetComponentsInChildren<AmmoPack>().Select(ap => ap.gameObject).ToList();
+        Debug.Log($"Ammo packs: {ammoPacks.Count}");
     }
 
     public void Reset()
     {
-        foreach (var ap in AmmoPacks)
+        foreach (var ap in ammoPacks)
         {
             ap.SetActive(true);
         }
