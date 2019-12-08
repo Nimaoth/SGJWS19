@@ -22,7 +22,7 @@ public class SnowCannon : MonoBehaviour
             var go = GameObject.Instantiate(SnowballPrefab, SpawnPoint.position, Quaternion.identity);
             var rb = go.GetComponent<Rigidbody2D>();
             rb.AddForce(SpawnPoint.up * Strength, ForceMode2D.Impulse);
-            GameObject.Destroy(go, Interval * 5);
+            GameObject.Destroy(go, Interval * 1);
 
             yield return new WaitForSeconds(Interval);
         }
