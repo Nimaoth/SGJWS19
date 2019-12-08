@@ -9,6 +9,7 @@ TagManager:
   - AmmoPack
   - Snowball
   - Icicle
+  - Rezone
   layers:
   - Default
   - TransparentFX
