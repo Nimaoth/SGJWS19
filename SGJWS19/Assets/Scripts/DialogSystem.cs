@@ -76,6 +76,7 @@ public class DialogSystem : MonoBehaviour
 
     public void QueueText(string text)
     {
+        Debug.Log($"Queing: {text}");
         textQueue.Enqueue(text);
     }
 

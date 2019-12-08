@@ -1085,6 +1085,106 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 105494308}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &115496939
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 324200113}
+    m_Modifications:
+    - target: {fileID: 2207008989197114029, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: Text.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114029, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: Text.Array.data[0]
+      value: That blue ice over there looks pretty slippery.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114029, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: Text.Array.data[1]
+      value: It might stop me from reloading my guns properly.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.02066
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.065137
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114033, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_Name
+      value: SlipperyIce
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a1c26ad703c4b404a883117ff8caf974, type: 3}
+--- !u!4 &115496940 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+    type: 3}
+  m_PrefabInstance: {fileID: 115496939}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &127757354
 GameObject:
   m_ObjectHideFlags: 0
@@ -3421,14 +3521,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 324200112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.191339, y: -0.1058631, z: -12.584081}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1874518864}
-  - {fileID: 1068067876}
-  - {fileID: 785161032}
-  - {fileID: 1064997751}
-  - {fileID: 906486344}
+  - {fileID: 115496940}
+  - {fileID: 766180432}
+  - {fileID: 777460858}
+  - {fileID: 2120501849}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6282,6 +6382,107 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 430237046}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &766180431
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 324200113}
+    m_Modifications:
+    - target: {fileID: 2207008989197114029, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: Text.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114029, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: Text.Array.data[0]
+      value: Look, there seems to be ammunition floating in the air.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114029, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: Text.Array.data[1]
+      value: They seem to reload my weapons instantly without having to touch the
+        ground.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 29.037663
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 24.905136
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114033, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_Name
+      value: AmmoPack
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a1c26ad703c4b404a883117ff8caf974, type: 3}
+--- !u!4 &766180432 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+    type: 3}
+  m_PrefabInstance: {fileID: 766180431}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &767944084
 GameObject:
   m_ObjectHideFlags: 0
@@ -6603,80 +6804,106 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0.5}
---- !u!1 &785161031
-GameObject:
+--- !u!1001 &777460857
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 785161032}
-  - component: {fileID: 785161034}
-  - component: {fileID: 785161033}
-  m_Layer: 15
-  m_Name: AmmoPack
-  m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &785161032
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785161031}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 41.38, y: 26.43, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
-  m_Children: []
-  m_Father: {fileID: 324200113}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &785161033
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785161031}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &785161034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_Modification:
+    m_TransformParent: {fileID: 324200113}
+    m_Modifications:
+    - target: {fileID: 2207008989197114029, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: Text.Array.data[0]
+      value: My shotguns hold 2 shots each and I can reload them once on the ground.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114029, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: Text.Array.data[1]
+      value: How do I reload my guns without having any hands?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114029, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: Text.Array.data[2]
+      value: That's a very rude question to ask a disabled person...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.6086617
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7871369
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114033, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_Name
+      value: Reloading
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a1c26ad703c4b404a883117ff8caf974, type: 3}
+--- !u!4 &777460858 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+    type: 3}
+  m_PrefabInstance: {fileID: 777460857}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785161031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75b48b29c7edb8c4680a7c096f96db5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Text:
-  - Look, there seems to be ammunition floating in the air.
-  - They seem to reload my weapons instantly without having to touch the ground.
-  Kill: 1
 --- !u!4 &786574303 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4765328446458282816, guid: 3f7eafd70897002408ad56ebf5abbbc7,
@@ -6957,80 +7184,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 840439808}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &906486343
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 906486344}
-  - component: {fileID: 906486346}
-  - component: {fileID: 906486345}
-  m_Layer: 15
-  m_Name: Bonfire
-  m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &906486344
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 906486343}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.75, y: 1.93, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
-  m_Children: []
-  m_Father: {fileID: 324200113}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &906486345
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 906486343}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &906486346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 906486343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75b48b29c7edb8c4680a7c096f96db5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Text:
-  - Brrr, it's awfully cold in here.
-  - I should really try to keep warm at these conveniently placed bonfires.
-  Kill: 1
 --- !u!1 &911037412
 GameObject:
   m_ObjectHideFlags: 0
@@ -7650,155 +7803,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 476580417}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1064997750
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1064997751}
-  - component: {fileID: 1064997753}
-  - component: {fileID: 1064997752}
-  m_Layer: 15
-  m_Name: Reloading
-  m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1064997751
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1064997750}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.8, y: 2.23, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
-  m_Children: []
-  m_Father: {fileID: 324200113}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1064997752
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1064997750}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &1064997753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1064997750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75b48b29c7edb8c4680a7c096f96db5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Text:
-  - My shotguns hold 2 shots each and I can reload them once on the ground.
-  - How do I reload my guns without having any hands?
-  - That's a very rude question to ask a disabled person...
-  Kill: 1
---- !u!1 &1068067875
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1068067876}
-  - component: {fileID: 1068067878}
-  - component: {fileID: 1068067877}
-  m_Layer: 15
-  m_Name: SlipperyIce
-  m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1068067876
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1068067875}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.96, y: 4.03, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
-  m_Children: []
-  m_Father: {fileID: 324200113}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1068067877
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1068067875}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &1068067878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1068067875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75b48b29c7edb8c4680a7c096f96db5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Text:
-  - That blue ice over there looks pretty slippery.
-  - It might stop me from reloading my guns properly.
-  Kill: 1
 --- !u!1 &1079145640
 GameObject:
   m_ObjectHideFlags: 0
@@ -9489,7 +9493,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1345267618}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -50}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1464661263}
@@ -9976,7 +9980,7 @@ MonoBehaviour:
   playerTransform: {fileID: 1434775012}
   cameraSpeed: 10
   cameraZoomSpeed: 1
-  ZoomMin: 3
+  ZoomMin: 4
   ZoomMax: 6
   ShakeDuration: 0.075
   ShakeIntensity: 0.2
@@ -12579,82 +12583,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1874518863
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1874518864}
-  - component: {fileID: 1874518867}
-  - component: {fileID: 1874518865}
-  m_Layer: 15
-  m_Name: Intro
-  m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1874518864
+--- !u!4 &1874518864 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+    type: 3}
+  m_PrefabInstance: {fileID: 2207008991031785982}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874518863}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.104, y: 0.873, z: 0}
-  m_LocalScale: {x: 2.4375, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 324200113}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1874518865
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874518863}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &1874518867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874518863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75b48b29c7edb8c4680a7c096f96db5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Text:
-  - Oh no, I lost both of my legs when falling down this ice cave.
-  - Luckily my arms are made of shotguns.
-  - Amazing how this game really makes you FEEL like a video game character with
-    a poorly written backstory.
-  Kill: 1
 --- !u!1 &1881704608
 GameObject:
   m_ObjectHideFlags: 0
@@ -13494,6 +13428,106 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ae9f03c941cc354c9ebb53d29d27d51, type: 3}
+--- !u!1001 &2120501848
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 324200113}
+    m_Modifications:
+    - target: {fileID: 2207008989197114029, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: Text.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114029, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: Text.Array.data[0]
+      value: Brrr, it's awfully cold in here.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114029, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: Text.Array.data[1]
+      value: I should really try to keep warm at these conveniently placed bonfires.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.3193383
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3911369
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114033, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_Name
+      value: Bonfire
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a1c26ad703c4b404a883117ff8caf974, type: 3}
+--- !u!4 &2120501849 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+    type: 3}
+  m_PrefabInstance: {fileID: 2120501848}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2133511738 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8320684566948644999, guid: bd79c22d58e3742438baef4fbc7ed457,
@@ -13550,12 +13584,12 @@ PrefabInstance:
     - target: {fileID: 1146422967275235252, guid: b77808b564687fe44b095617ae1dc995,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.49
+      value: -9.796
       objectReference: {fileID: 0}
     - target: {fileID: 1146422967275235252, guid: b77808b564687fe44b095617ae1dc995,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 84.19
+      value: 0.392
       objectReference: {fileID: 0}
     - target: {fileID: 1146422967275235252, guid: b77808b564687fe44b095617ae1dc995,
         type: 3}
@@ -13625,6 +13659,80 @@ Rigidbody2D:
     type: 3}
   m_PrefabInstance: {fileID: 1146422965874641488}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2207008991031785982
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 324200113}
+    m_Modifications:
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.087338
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1511369
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114030, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207008989197114033, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_Name
+      value: Intro
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018108150868708477, guid: a1c26ad703c4b404a883117ff8caf974,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.354
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a1c26ad703c4b404a883117ff8caf974, type: 3}
 --- !u!1001 &4955433588101164573
 PrefabInstance:
   m_ObjectHideFlags: 0
