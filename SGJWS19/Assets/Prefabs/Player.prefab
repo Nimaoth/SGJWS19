@@ -284,11 +284,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 36781f6367d08a943bae148038e1bc05, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -306,9 +306,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.14587164}
+  m_Offset: {x: 0, y: 0.12408611}
   serializedVersion: 2
-  m_Radius: 0.102479696
+  m_Radius: 0.124265224
 --- !u!233 &2038663643100563968
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -325,7 +325,7 @@ HingeJoint2D:
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0.517}
-  m_UseMotor: 1
+  m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 0.5
@@ -749,7 +749,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 3
-  m_LinearDrag: 0.5
+  m_LinearDrag: 1
   m_AngularDrag: 2
   m_GravityScale: 1.5
   m_Material: {fileID: 0}
@@ -776,6 +776,7 @@ MonoBehaviour:
   BulletSpeed: 25
   HpLossSpeed: 0.05
   HpRegenSpeed: 5
+  ReloadDelay: 0.25
   LeftForcePoint: {fileID: 1146422966486513241}
   RightForcePoint: {fileID: 1146422966819826232}
   Rigidbody: {fileID: 1146422967275235251}
@@ -785,9 +786,10 @@ MonoBehaviour:
   freezeColor: {r: 0, g: 0.83644056, b: 1, a: 0}
   Left: {fileID: 1146422967207659439}
   Right: {fileID: 1146422966225268244}
-  State: 0
+  State: 1
   isInBonfire: 0
   isOnGround: 0
+  groundTime: 0
   freezeTimeLeft: 0
 --- !u!114 &1146422967275235249
 MonoBehaviour:
@@ -872,6 +874,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: eafe79ba-f567-4ad7-a801-430924bb77b9
     m_ActionName: PlayerControls/RightShoot[/DualShock4GamepadHID/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1146422967275235250}
+        m_MethodName: OnAdvanceDialog
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: aba5e5d6-5b29-4feb-95e5-a0e7c09e96ee
+    m_ActionName: PlayerControls/AdvanceDialog[/DualShock4GamepadHID/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerControls
@@ -891,7 +908,7 @@ GameObject:
   - component: {fileID: 313165995172185094}
   m_Layer: 9
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

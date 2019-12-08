@@ -25,6 +25,7 @@ public class Arm : MonoBehaviour
     {
         switch (player.State)
         {
+            case PlayerState.Intro:
             case PlayerState.Normal:
             {
                 var angle = Mathf.LerpAngle(transform.rotation.eulerAngles.z, targetAngle, player.ArmSpeed * Time.deltaTime);
@@ -82,10 +83,9 @@ public class Arm : MonoBehaviour
         }
     }
 
-    public void Reload(bool force)
+    public void Reload()
     {
-        if (force || cooldown <= 0)
-            Ammo = 2;
+        Ammo = 2;
     }
 
     public void OnShootDown()
