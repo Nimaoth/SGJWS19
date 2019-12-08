@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
 
     public Arm Left;
     public Arm Right;
+    public AudioSource ReloadSound;
 
     public PlayerState State = PlayerState.Normal;
 
@@ -175,8 +176,9 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     {
         if (force)
         {
-            Left.Reload();
-            Right.Reload();
+            var l = Left.Reload();
+            var r = Right.Reload();
+            ReloadSound.Play();
             return;
         }
 
@@ -189,8 +191,10 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
             yield return new WaitForSeconds(ReloadDelay);
             if (groundTime >= ReloadDelay)
             {
-                Left.Reload();
-                Right.Reload();
+                var l = Left.Reload();
+                var r = Right.Reload();
+                if (!ReloadSound.isPlaying && (l || r))
+                    ReloadSound.Play();
             }
 
             isReloading = false;
