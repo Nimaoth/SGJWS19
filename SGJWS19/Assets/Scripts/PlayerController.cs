@@ -27,10 +27,10 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     public Transform LeftForcePoint;
     public Transform RightForcePoint;
     public Rigidbody2D Rigidbody;
+    public Rigidbody2D RigidbodyHead;
 
     public Arm Left;
     public Arm Right;
-    public HingeJoint2D HeadJoint;
 
     public PlayerState State;
     public float HP { get; private set; } = 1.0f;
@@ -63,7 +63,8 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
         yield return new WaitForSeconds(1);
 
         var closestBonfire = Level.Instance.FindClosest(transform.position);
-        
+
+        RigidbodyHead.isKinematic = true;
         Rigidbody.isKinematic     = true;
         yield return null;
         Rigidbody.position        = closestBonfire.SpawnPoint.position;
@@ -72,6 +73,7 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
         Rigidbody.angularVelocity = 0;
         yield return null;
         Rigidbody.isKinematic     = false;
+        RigidbodyHead.isKinematic = false;
         yield return new WaitForSeconds(1);
         State = PlayerState.Normal;
     } 

@@ -622,9 +622,9 @@ MonoBehaviour:
   LeftForcePoint: {fileID: 1146422966486513241}
   RightForcePoint: {fileID: 1146422966819826232}
   Rigidbody: {fileID: 1146422967275235251}
+  RigidbodyHead: {fileID: 1146422965917267422}
   Left: {fileID: 1146422967207659439}
   Right: {fileID: 1146422966225268244}
-  HeadJoint: {fileID: 2038663643100563968}
   State: 0
   isInBonfire: 0
   isOnGround: 0
