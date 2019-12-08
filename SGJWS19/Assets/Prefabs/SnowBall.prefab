@@ -133,7 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156febfaa411a70479377230245f3d27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 0.2
+  Damage: 0
+  FreezDuration: 0.75
   SplitForce: 5
   PiecePrefab: {fileID: 5355619808397018498, guid: 294f636229a6e74419af2594c435b776,
     type: 3}
