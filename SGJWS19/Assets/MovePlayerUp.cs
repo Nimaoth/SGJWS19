@@ -8,6 +8,7 @@ public class MovePlayerUp : MonoBehaviour
     public new Transform camera;
     public PlayerController player;
     public Rigidbody2D playerRB;
+    public GameObject UI;
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player")){
@@ -31,6 +32,7 @@ public class MovePlayerUp : MonoBehaviour
         {
             GameObject.Destroy(gameObject);
             player.State = PlayerState.Normal;
+            UI.SetActive(true);
         }
     }
 }
