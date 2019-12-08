@@ -776,11 +776,7 @@ MonoBehaviour:
   ArmSpeed: 15
   BalanceStrength: 5
   BulletSpeed: 25
-<<<<<<< HEAD
   HpLossSpeed: 0.001
-=======
-  HpLossSpeed: 0.02
->>>>>>> 93c47dba1908a29ee26994e42f9a47a41bed66f1
   HpRegenSpeed: 5
   ReloadDelay: 0.2
   LeftForcePoint: {fileID: 1146422966486513241}

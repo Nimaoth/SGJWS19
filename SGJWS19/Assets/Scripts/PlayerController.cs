@@ -70,22 +70,30 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
 
     internal void TeleportTo(Vector3 position, bool instaMoveCam = false)
     {
-        RigidbodyHead.isKinematic = true;
-        Rigidbody.isKinematic     = true;
+        IEnumerator MoveTo()
+        {
+            RigidbodyHead.isKinematic = true;
+            Rigidbody.isKinematic     = true;
 
-        // RigidbodyHead.transform.localPosition = new Vector3(0, 0.517f, 0);
-        // RigidbodyHead.transform.localRotation = Quaternion.identity;
-        RigidbodyHead.velocity                = Vector2.zero;
-        RigidbodyHead.angularVelocity         = 0;
+            yield return null;
 
-        Rigidbody.isKinematic     = true;
-        Rigidbody.position        = position;
-        Rigidbody.rotation        = 0;
-        Rigidbody.velocity        = Vector2.zero; 
-        Rigidbody.angularVelocity = 0;
+            RigidbodyHead.transform.localPosition = new Vector3(0, 0.517f, 0);
+            RigidbodyHead.transform.localRotation = Quaternion.identity;
+            RigidbodyHead.velocity                = Vector2.zero;
+            RigidbodyHead.angularVelocity         = 0;
 
-        Rigidbody.isKinematic     = false;
-        RigidbodyHead.isKinematic = false;
+            RigidbodyHead.transform.position = position;
+            Rigidbody.isKinematic     = true;
+            Rigidbody.position        = position;
+            Rigidbody.rotation        = 0;
+            Rigidbody.velocity        = Vector2.zero; 
+            Rigidbody.angularVelocity = 0;
+
+            yield return null;
+            Rigidbody.isKinematic     = false;
+            RigidbodyHead.isKinematic = false;
+        }
+        StartCoroutine(MoveTo());
     }
 
     private IEnumerator Death()
