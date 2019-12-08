@@ -61,7 +61,6 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     private IEnumerator Death()
     {
         State = PlayerState.Dead;
-        freezeTimeLeft = 0.0f;
 
         yield return new WaitForSeconds(1);
 
@@ -98,11 +97,15 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
             TakeDamage(HpLossSpeed * Time.deltaTime);
 
         var targetColor = Color.white;
-        if (State == PlayerState.Frozen)
-            targetColor = freezeColor;
+        switch (State) {
+            case PlayerState.Frozen:
+            case PlayerState.Dead:
+                targetColor = freezeColor;
+                break;
+        }
 
-        bodyMaterial.color = Color.Lerp(bodyMaterial.color, targetColor, Time.deltaTime * 10.0f);
-        shotgunMaterial.color = Color.Lerp(shotgunMaterial.color, targetColor, Time.deltaTime * 10.0f);
+        bodyMaterial.color = Color.Lerp(bodyMaterial.color, targetColor, Time.deltaTime * 15.0f);
+        shotgunMaterial.color = Color.Lerp(shotgunMaterial.color, targetColor, Time.deltaTime * 15.0f);
     }
 
     private void Freeze(float duration)
@@ -122,7 +125,7 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     private void TakeDamage(float amount)
     {
         HP -= amount;
-        if (HP < 0.0f)
+        if (HP <= 0.0f)
         {
             // die, respawn at closest unlocked bonfire
             StartCoroutine(Death());
@@ -156,7 +159,7 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
             Level.Instance.VisitBonfire(other.GetComponent<Bonfire>());
             Level.Instance.Reset();
             isInBonfire = true;
-            freezeTimeLeft = 0.0f;
+            freezeTimeLeft = Mathf.Min(1.0f, freezeTimeLeft);
         }
         else if (other.CompareTag("AmmoPack"))
         {
@@ -168,8 +171,8 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
             var icicle = other.gameObject.GetComponent<Icicle>();
             if (!icicle.DidDamage)
             {
-                TakeDamage(icicle.Damage);
                 Freeze(icicle.FreezDuration);
+                TakeDamage(icicle.Damage);
             }
             icicle.DidDamage = true;
         }
@@ -193,8 +196,8 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
         else if (other.gameObject.CompareTag("Snowball"))
         {
             var snowball = other.gameObject.GetComponent<Snowball>();
-            TakeDamage(snowball.Damage);
             Freeze(snowball.FreezDuration);
+            TakeDamage(snowball.Damage);
             snowball.Break();
         }
     }

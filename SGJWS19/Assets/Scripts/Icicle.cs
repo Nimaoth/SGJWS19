@@ -10,6 +10,8 @@ public class Icicle : MonoBehaviour
     private Vector3 originalPosition;
     private new Rigidbody2D rigidbody;
 
+    private bool isDropping = false;
+
     void Start()
     {
         originalPosition = transform.position;
@@ -17,15 +19,26 @@ public class Icicle : MonoBehaviour
         StartCoroutine(Drop());
     }
 
-    private void Respawn()
+    public void Respawn(Collider2D other)
     {
-        DidDamage = false;
-        rigidbody.isKinematic = true;
-        rigidbody.position = originalPosition;
-        rigidbody.rotation = 0;
-        rigidbody.velocity = Vector2.zero;
-        rigidbody.angularVelocity = 0;
-        StartCoroutine(Drop());
+        if (!other.CompareTag("Ground") || !isDropping)
+            return;
+
+        IEnumerator RespawnCoro()
+        {
+            isDropping = false;
+            rigidbody.isKinematic = true;
+            rigidbody.velocity = Vector2.zero;
+            rigidbody.angularVelocity = 0;
+            
+            yield return new WaitForSeconds(0.5f);
+
+            rigidbody.position = originalPosition;
+            rigidbody.rotation = 0;
+            DidDamage = false;
+            StartCoroutine(Drop());
+        }
+        StartCoroutine(RespawnCoro());
     }
 
     private IEnumerator Drop()
@@ -39,13 +52,7 @@ public class Icicle : MonoBehaviour
             yield return null;
         }
         rigidbody.isKinematic = false;
-    }
-
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Ground"))
-        {
-            Respawn();
-        }
+        isDropping = true;
     }
 
 //     private void OnCollisionEnter2D(Collision2D other) {
