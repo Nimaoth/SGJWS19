@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[Serializable]
 enum DialogState
 {
     Empty,
@@ -37,6 +39,20 @@ public class DialogSystem : MonoBehaviour
 
     private void Update()
     {
+        var gamepad = Gamepad.current;
+        if (gamepad != null)
+        {
+            if (gamepad.circleButton.wasPressedThisFrame)
+            {
+                state = DialogState.Empty;
+                textQueue.Clear();
+            }
+            else if (gamepad.crossButton.wasPressedThisFrame)
+            {
+                AdvanceDialog();
+            }
+        }
+
         XButtonImage.SetActive(state == DialogState.Done);
         switch (state) {
             case DialogState.Advancing:
@@ -81,7 +97,7 @@ public class DialogSystem : MonoBehaviour
         currentText = null;
     }
 
-    public void OnX()
+    public void AdvanceDialog()
     {
         switch (state) {
             case DialogState.Advancing:

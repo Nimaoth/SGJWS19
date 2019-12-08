@@ -304,7 +304,7 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     public void OnAdvanceDialog(InputAction.CallbackContext context)
     {
         if (context.performed)
-            DialogSystem.Instance.OnX();
+            DialogSystem.Instance.AdvanceDialog();
     }
 
     #endregion

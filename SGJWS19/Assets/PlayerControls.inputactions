@@ -40,7 +40,7 @@
                 {
                     "name": "AdvanceDialog",
                     "type": "Button",
-                    "id": "aba5e5d6-5b29-4feb-95e5-a0e7c09e96ee",
+                    "id": "a1effcfa-8373-4e01-98cf-174408eb5ecd",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -93,8 +93,8 @@
                 },
                 {
                     "name": "",
-                    "id": "46ec90d2-d356-4598-9528-96fb3f000f9d",
-                    "path": "<DualShockGamepad>/buttonSouth",
+                    "id": "fde52434-8ba0-47be-b14c-1d15437ebdce",
+                    "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
