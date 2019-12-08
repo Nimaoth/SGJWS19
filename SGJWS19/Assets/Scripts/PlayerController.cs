@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
 
     public PlayerState State = PlayerState.Normal;
 
+    public bool CanFreeze = false;
+
     public float HP { get; private set; } = 1.0f;
 
     // private stuff
@@ -95,6 +97,10 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
         StartCoroutine(MoveTo());
     }
 
+    public void EnableFreeze(Collider2D _) {
+        CanFreeze = true;
+    }
+
     private IEnumerator Death()
     {
         State = PlayerState.Dead;
@@ -110,6 +116,9 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
 
     private void Update()
     {
+        if (State == PlayerState.Intro)
+            return;
+
         if (isOnGround)
             groundTime += Time.deltaTime;
         else
@@ -125,11 +134,13 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
                 break;
         }
 
-        // handle damage/healing
-        if (isInBonfire)
-            TakeDamage(-HpRegenSpeed * Time.deltaTime);
-        else
-            TakeDamage(HpLossSpeed * Time.deltaTime);
+        if (CanFreeze){
+            // handle damage/healing
+            if (isInBonfire)
+                TakeDamage(-HpRegenSpeed * Time.deltaTime);
+            else
+                TakeDamage(HpLossSpeed * Time.deltaTime);
+        }
 
         var targetColor = Color.white;
         switch (State) {

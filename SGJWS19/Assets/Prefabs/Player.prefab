@@ -776,7 +776,7 @@ MonoBehaviour:
   ArmSpeed: 15
   BalanceStrength: 5
   BulletSpeed: 25
-  HpLossSpeed: 0.001
+  HpLossSpeed: 0.05
   HpRegenSpeed: 5
   ReloadDelay: 0.2
   LeftForcePoint: {fileID: 1146422966486513241}
@@ -790,6 +790,7 @@ MonoBehaviour:
   Right: {fileID: 1146422966225268244}
   ReloadSound: {fileID: 1487521095463842465}
   State: 1
+  CanFreeze: 0
   isInBonfire: 0
   isOnGround: 0
   groundTime: 0
