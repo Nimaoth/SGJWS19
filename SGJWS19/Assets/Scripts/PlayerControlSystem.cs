@@ -103,17 +103,6 @@ public class @PlayerControlSystem : IInputActionCollection, IDisposable
                     ""action"": ""RightShoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fde52434-8ba0-47be-b14c-1d15437ebdce"",
-                    ""path"": ""<Keyboard>/k"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AdvanceDialog"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
