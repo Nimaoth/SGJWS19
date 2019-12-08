@@ -77,17 +77,16 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
 
             yield return null;
 
-            RigidbodyHead.transform.localPosition = new Vector3(0, 0.517f, 0);
-            RigidbodyHead.transform.localRotation = Quaternion.identity;
             RigidbodyHead.velocity                = Vector2.zero;
             RigidbodyHead.angularVelocity         = 0;
 
-            RigidbodyHead.transform.position = position;
+            Rigidbody.transform.position = position;
             Rigidbody.isKinematic     = true;
             Rigidbody.position        = position;
             Rigidbody.rotation        = 0;
             Rigidbody.velocity        = Vector2.zero; 
             Rigidbody.angularVelocity = 0;
+            yield return null;
 
             yield return null;
             Rigidbody.isKinematic     = false;
