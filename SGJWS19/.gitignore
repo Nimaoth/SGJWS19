@@ -59,4 +59,4 @@ sysinfo.txt
 crashlytics-build.properties
 
 *.blend1
-
+*.blend1.meta
