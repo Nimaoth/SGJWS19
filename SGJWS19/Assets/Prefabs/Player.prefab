@@ -774,11 +774,11 @@ MonoBehaviour:
   ShotgunCooldown: 0.25
   ShotgunPower: 20
   ArmSpeed: 15
-  BalanceStrength: 3.5
+  BalanceStrength: 5
   BulletSpeed: 25
-  HpLossSpeed: 0.05
+  HpLossSpeed: 0.02
   HpRegenSpeed: 5
-  ReloadDelay: 0.25
+  ReloadDelay: 0.2
   LeftForcePoint: {fileID: 1146422966486513241}
   RightForcePoint: {fileID: 1146422966819826232}
   Rigidbody: {fileID: 1146422967275235251}

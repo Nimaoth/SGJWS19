@@ -44,6 +44,8 @@ public class DialogSystem : MonoBehaviour
         {
             if (gamepad.circleButton.wasPressedThisFrame)
             {
+                if (currentShowText != null)
+                    StopCoroutine(currentShowText);
                 state = DialogState.Empty;
                 textQueue.Clear();
             }
@@ -76,7 +78,6 @@ public class DialogSystem : MonoBehaviour
 
     public void QueueText(string text)
     {
-        Debug.Log($"Queing: {text}");
         textQueue.Enqueue(text);
     }
 
