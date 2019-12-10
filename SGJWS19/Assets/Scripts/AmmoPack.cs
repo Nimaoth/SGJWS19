@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class AmmoPack : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float TimeToReset = 3.0f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Player")) {
+            var playerController = other.attachedRigidbody.GetComponent<PlayerController>();
+            playerController.Reload(true);
+            Sandman.Instance.Sleep(gameObject, TimeToReset);
+        }
     }
 }

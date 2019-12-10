@@ -29,9 +29,7 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     public Transform LeftForcePoint;
     public Transform RightForcePoint;
     public Rigidbody2D Rigidbody;
-    public Rigidbody2D RigidbodyHead;
-    public Material bodyMaterial;
-    public Material shotgunMaterial;
+    public SpriteRenderer[] Sprites;
     public Color freezeColor;
 
     public Arm Left;
@@ -74,13 +72,9 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     {
         IEnumerator MoveTo()
         {
-            RigidbodyHead.isKinematic = true;
             Rigidbody.isKinematic     = true;
 
             yield return null;
-
-            RigidbodyHead.velocity                = Vector2.zero;
-            RigidbodyHead.angularVelocity         = 0;
 
             Rigidbody.transform.position = position;
             Rigidbody.isKinematic     = true;
@@ -92,7 +86,6 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
 
             yield return null;
             Rigidbody.isKinematic     = false;
-            RigidbodyHead.isKinematic = false;
         }
         StartCoroutine(MoveTo());
     }
@@ -150,8 +143,8 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
                 break;
         }
 
-        bodyMaterial.color = Color.Lerp(bodyMaterial.color, targetColor, Time.deltaTime * 15.0f);
-        shotgunMaterial.color = Color.Lerp(shotgunMaterial.color, targetColor, Time.deltaTime * 15.0f);
+        foreach (var sprite in Sprites)
+            sprite.color = Color.Lerp(sprite.color, targetColor, Time.deltaTime * 10.0f);
     }
 
     private void Freeze(float duration)
@@ -183,7 +176,7 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
     {
         switch (State) {
             case PlayerState.Normal:
-                if (Rigidbody.velocity.sqrMagnitude < 1.5)
+                if (Rigidbody.velocity.sqrMagnitude < 1.5 && isOnGround)
                 {
                     var angle = Mathf.LerpAngle(Rigidbody.rotation, 0, BalanceStrength * Time.fixedDeltaTime);
                     Rigidbody.MoveRotation(angle);
@@ -192,7 +185,7 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
         }
     }
 
-    private void Reload(bool force)
+    public void Reload(bool force)
     {
         if (force)
         {
@@ -230,11 +223,6 @@ public class PlayerController : MonoBehaviour, IPlayerControlsActions
             Level.Instance.Reset();
             isInBonfire = true;
             freezeTimeLeft = Mathf.Min(1.0f, freezeTimeLeft);
-        }
-        else if (other.CompareTag("AmmoPack"))
-        {
-            Reload(true);
-            other.gameObject.SetActive(false);
         }
         else if (other.gameObject.CompareTag("Icicle"))
         {

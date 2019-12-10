@@ -4,7 +4,6 @@ public class Arm : MonoBehaviour
 {
     public PlayerController player;
 
-    public GameObject BulletPrefab;
     public GameObject SmokeScreen;
     public GameObject SmokeSpawnPoint;
 
@@ -71,16 +70,6 @@ public class Arm : MonoBehaviour
 
         var force = transform.up * player.ShotgunPower;
         player.Rigidbody.AddForceAtPosition(force, player.LeftForcePoint.position, ForceMode2D.Impulse);
-
-        force.Normalize();
-
-        for (int i = -3; i <= 3; i++)
-        {
-            var bulletForce = Quaternion.Euler(0, 0, i * 5 * Random.Range(0.9f, 1.1f)) * new Vector2(force.x, force.y);
-            var bulletGO = GameObject.Instantiate(BulletPrefab, transform.position, Quaternion.identity);
-
-            bulletGO.GetComponent<Rigidbody2D>().velocity = -bulletForce * player.BulletSpeed;
-        }
     }
 
     public bool Reload()

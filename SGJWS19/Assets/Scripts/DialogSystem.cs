@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 [Serializable]
 enum DialogState
@@ -16,7 +17,7 @@ public class DialogSystem : MonoBehaviour
 {
     public static DialogSystem Instance { get; private set; }
 
-    public TMPro.TMP_Text Text;
+    public Text Text;
     public GameObject XButtonImage;
     public GameObject Panel;
     public AudioSource AudioSource;
